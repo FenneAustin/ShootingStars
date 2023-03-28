@@ -1,11 +1,8 @@
 package org.shootingstar;
 
-import net.runelite.client.config.Config;
-import net.runelite.client.config.ConfigGroup;
-import net.runelite.client.config.ConfigItem;
-import net.runelite.client.config.Range;
-import net.runelite.client.config.Units;
 
+
+import org.shootingstar.ui.ShootingStarsPanelType;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -72,6 +69,17 @@ public interface ShootingStarsConfig extends Config
 	default int shootingStarExpirationLength()
 	{
 		return 5;
+	}
+
+	@ConfigItem(
+			keyName = SHOOTING_STAR_PANEL_CLASS,
+			position = 3,
+			name = "Stars Panel",
+			description = "Choose the shooting stars panel implementation"
+	)
+	default ShootingStarsPanelType shootingStarsPanelType()
+	{
+		return ShootingStarsPanelType.CONDENSED;
 	}
 
 	@ConfigItem(
