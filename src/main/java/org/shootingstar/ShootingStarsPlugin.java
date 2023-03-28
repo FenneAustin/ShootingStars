@@ -1,4 +1,4 @@
-package com.example;
+package org.shootingstar;
 
 import com.google.inject.Provides;
 import javax.inject.Inject;
@@ -11,18 +11,23 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
 
 @Slf4j
 @PluginDescriptor(
 	name = "Example"
 )
-public class ExamplePlugin extends Plugin
+public class ShootingStarsPlugin extends Plugin
 {
+	static final String CONFIG_GROUP_KEY = "shootingstar";
 	@Inject
 	private Client client;
 
 	@Inject
-	private ExampleConfig config;
+	private ShootingStarsConfig config;
 
 	@Override
 	protected void startUp() throws Exception
@@ -46,8 +51,12 @@ public class ExamplePlugin extends Plugin
 	}
 
 	@Provides
-	ExampleConfig provideConfig(ConfigManager configManager)
+	ShootingStarsConfig provideConfig(ConfigManager configManager)
 	{
-		return configManager.getConfig(ExampleConfig.class);
+		return configManager.getConfig(ShootingStarsConfig.class);
 	}
+
+	@Getter
+	@Setter
+	private ArrayList<ShootingStarsData> starData = new ArrayList<>();
 }
